@@ -7,16 +7,22 @@
   <body>
     <h2>Hello, {{ name }} </h2>
     <h2>Today's weather: {{ weather | lower }} </h2>
+
+    <!-- forタグを使って繰り返し処理を行う -->
     <ul>
     {% for item in weather_detail %}  <!-- 「weather_detail」は3個の文字列型要素を持つリスト（記章の詳細） -->
       <li>{{ item }}</li>  <!-- forタグでControllerから渡されたリストの要素に順に処理を適用 -->
     {% endfor %}
     </ul>
+
     <h2>Today's fortune: {{ fortune }} </h2>
+
+    <!-- ifで条件分岐 -->
     {% if isGreatFortune %}
     <img src="https://1.bp.blogspot.com/-al_xSk3GL1o/XLAdSlunhRI/AAAAAAABSXQ/3_HokhAnxAA6X-noz5UOIm88i73rclf8gCLcBGAs/s200/mark_oukan_crown9.png" alt="王冠画像">
     {% else %}
     <img src="https://1.bp.blogspot.com/-lhnCOZpQOAI/XGjx_uTW7fI/AAAAAAABRdc/EkM9bOYa5xEXF89YtBG7F9cdIcCOKTp6wCLcBGAs/s400/animal_panda_cheerleader.png" alt="応援画像">
     {% endif %}
+
   </body>
 </html>
