@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>記事編集</title>
+  <link rel="stylesheet" href="{% static 'reset.css' %}">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 'edit.css' %}">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__inner inner">
+      <h1 class="header__ttl">Django Sample Application</h1>
+      <div class="header__create">
+        <a href="{% url 'create' %}" class="header__create__btn">New Post</a>
+      </div>
+    </div><!-- /.header__inner -->
+  </header>
+
+  <div class="inner">
+
+    <form class="edit__form" action="{% url 'update' article.id %}" method="post">
+      <h1 class="edit__ttl">Edit article</h1>
+      {% csrf_token %}
+      <div>
+        <label for="titleInput">Title</label>
+        <input id="titleInput" name="title" type="text" placeholder="Input title" value="{{ article.title }}">
+      </div>
+      <div>
+        <label for="textinput">Text</label>
+        <textarea name="text" id="textinput" rows="3">{{ article.body }}</textarea>
+      </div>
+      <div class="submit__body">
+        <button class="submit__btn" type="submit">Submit</button>
+      </div>
+    </form>
+
+  </div>
+  <!-- /.inner -->
+</body>
+</html>

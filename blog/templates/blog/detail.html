@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>記事詳細</title>
+  <link rel="stylesheet" href="{% static 'reset.css' %}">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 'detail.css' %}">
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+</head>
+<body>
+
+
+  <header class="header">
+    <div class="header__inner inner">
+      <h1 class="header__ttl">Django Sample Application</h1>
+      <div class="header__create">
+        <a href="{% url 'create' %}" class="header__create__btn">New Post</a>
+      </div>
+    </div><!-- /.header__inner -->
+  </header>
+
+  <div class="inner">
+
+    <!-- 記事詳細 -->
+    <div class="detail__main__inner">
+      <h2 class="article__ttl">{{ article.title }}</h2>
+      <p class="article__posted-at">投稿日時：{{ article.posted_at }}</p>
+      <p class="article__body">{{ article.body | linebreaksbr }}</p>
+      <div class="detail__main__footer">
+        <div class="like__body">
+          <a class="detail__main__footer-btn detail__main__footer-btn-like" onclick="like({{ article.id }});">
+            Like：<span id="like{{ article.id }}">{{ article.like }}</span>
+          </a>
+        </div><!-- /.like__body -->
+
+        <div class="detail__main__footer__right">
+          <p><a class="detail__main__footer-btn detail__main__footer-btn-edit" href="{% url 'update' article.id %}">Edit</a></p>
+          <p><a class="detail__main__footer-btn detail__main__footer-btn-delete" href="{% url 'delete' article.id %}">Delete</a></p>
+        </div><!-- /.detail__main__footer-right -->
+
+      </div><!-- /.detail__main__footer -->
+    </div>
+    <!-- /.detail__main__inner -->
+  
+    <hr>
+
+    <!-- コメント部分 -->
+    <div class="comment__inner">
+
+      <h2 class="comment__ttl">Comments</h2>
+      <!-- コメントフォーム -->
+      <form class="comment__form" action="{% url 'detail' article.id %}" method="post">
+        {% csrf_token %}
+
+        <div class="comment__form__body">
+          <label for="textInput">下のフォームからコメントを投稿できます。</label>
+          <textarea class="comment__form__textarea" name="text" id="textInput" rows="3"></textarea>  <!-- 「name="text"」は「views.detail」の「request.POST['text']」の「text」 -->
+          <div class="submit__body">
+            <button class="submit__btn" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    
+      <!-- コメント一覧表示 -->
+      {% if comments %}  <!-- コメントがあれば実行 -->
+      {% for comment in comments %}  <!-- 記事に紐付けられたコメントを一覧表示 -->
+      <div class="posted__comment__body">
+        <div class="posted__comment__posted-at">[{{ comment.posted_at }}]</div>  <!-- 投稿日時 -->
+        <p class="posted__comment__text">{{ comment.text | linebreaksbr }}</p>  <!-- テキスト -->
+      </div>
+      {% endfor %}  <!-- ループ終了 -->
+      {% else %}  <!-- コメントがないとき実行 -->
+      <p>No comment.</p>
+      {% endif %}
+
+    </div>
+    <!-- /.comment__inner -->
+    
+
+  </div>
+  <!-- /.inner -->
+
+</body>
+</html>

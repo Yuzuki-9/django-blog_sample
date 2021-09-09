@@ -1,0 +1,64 @@
+.article__ttl {
+    font-size: 50px;
+    margin: 16px 0;
+}
+
+.article__posted-at {
+    font-size: 20px;
+    margin: 16px 0;
+}
+
+.article__body {
+    background: #f5f5f5;
+    padding: 20px;
+    margin: 16px 0;
+}
+
+.detail__main__footer {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+
+.detail__main__footer__right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* コメント */
+
+/* コメント投稿フォーム */
+.comment__ttl {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.comment__form {
+    background: #f5f5f5;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.comment__form__textarea {
+    margin: 20px 0;
+}
+
+/* コメント表示 */
+.posted__comment__body {
+    margin: 16px 0;
+    border: 1px solid #f5f5f5;
+    box-shadow: 1px 1px #f5f5f5;
+    border-radius: 3px;
+}
+
+.posted__comment__posted-at {
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.posted__comment__text {
+    padding: 20px;
+}

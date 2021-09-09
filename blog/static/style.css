@@ -1,0 +1,177 @@
+/* 共通部分 */
+
+a {
+  color: #000;
+}
+
+
+
+
+/* btn共通 */
+
+.btn__body {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  background: #dc143c;
+  color: #fff;
+  border: 2px solid #dc143c;
+  border-radius: 5px;
+  padding: 16px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #dc143c;
+}
+
+.btn__link {
+  padding: 16px 50px;
+}
+
+/* ヘッダー部分 */
+.header {
+  background: #2f4f4f;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+}
+
+.header__ttl {
+  font-size: 30px;
+}
+
+
+.header__create {
+  margin-left: auto;
+}
+
+.header__create__btn {
+  background: #00bfff;
+  color: #fff;
+  border: 2px solid #00bfff;
+}
+
+.header__create__btn:hover {
+  background: #fff;
+  color: #00bfff;
+}
+
+/* トップページ */
+
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form__inner {
+  padding: 20px;
+  background: #f5f5f5;
+  margin: 40px auto;
+}
+
+.form__ttl {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.form__txt {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+
+dt, input {
+  margin-bottom: 16px;
+}
+
+dd {
+  margin: 0;
+  width: 100%;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+}
+
+.submit__body {
+  margin-top: 30px;
+}
+
+.submit__btn {
+  padding: 16px 20px;
+  background: #00bfff;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.submit__btn:hover {
+  background: #fff;
+  color: #00bfff;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ~ いいね、Edit、Delete ~ ボタン */
+
+.detail__main__footer-btn {
+  border-radius: 3px;
+  padding: 8px 16px;
+  display: inline-block;
+  transition: all  .3s;
+}
+
+.detail__main__footer-btn-like {
+  border: 1px solid #708090;
+  color: #708090;
+}
+
+.detail__main__footer-btn-like:hover {
+  color: #fff;
+  background: #708090;
+}
+
+.detail__main__footer-btn-edit {
+  border: 1px solid #3cb371;
+  color: #3cb371;
+  margin-right: 8px;
+}
+
+.detail__main__footer-btn-edit:hover {
+  color: #fff;
+  background: #3cb371;
+}
+
+.detail__main__footer-btn-delete {
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+
+.detail__main__footer-btn-delete:hover {
+  color: #fff;
+  background: #ff0000;
+}

@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ブログトップ</title>
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  </head>
+  <body>
+
+    <header class="header">
+      <div class="header__inner inner">
+        <h1 class="header__ttl">Django Sample Application</h1>
+        <div class="btn__body header__create">
+          <a href="{% url 'create' %}" class="btn header__create__btn">New Post</a>
+        </div>
+      </div><!-- /.header__inner -->
+    </header>
+    
+
+    <div class="inner">
+
+      <!-- form -->
+      <div class="form__inner">
+        <h2 class="form__ttl">記事投稿</h2>
+        <p class="form__txt">下のフォームから記事を投稿できます。</p>
+        <form action="{% url 'index' %}" method="post">
+          {% csrf_token %}
+          <div>
+            <dt><label for="titleInput">Title</label></dt>
+            <dd><input id="titleInput" name="title" type="text" placeholder="Input title"></dd>
+          </div>
+          <div>
+            <dt><label for="textInput">Text</label></dt>
+            <dd><textarea id="textInput" name="text" rows="3"></textarea></dd>
+          </div>
+          <div class="submit__body">
+            <button class="submit__btn" type="submit">Submit</button>
+          </div>
+        </form>
+      </div><!-- /.form__inner -->
+  
+
+  
+      <!-- 記事一覧 -->
+      {% if articles %}
+      {% for article in articles %}
+      <div class="articles__body">
+
+        <div class="articles__ttl__body">
+          
+          <div class="articles__ttl__body__left">
+            <a class="articles__ttl" href="{% url 'detail' article.id %}">{{ article.title }}</a>  <!-- title -->
+            <small>[{{ article.posted_at }}]</small>  <!-- 投稿日時 -->
+          </div><!-- /.articles__ttl__body__left -->
+  
+          <div class="articles__ttl__body__right">
+            <p><a class="detail__main__footer-btn detail__main__footer-btn-edit" href="{% url 'update' article.id %}">Edit</a></p>
+            <div class="like__body">
+              <a class="detail__main__footer-btn detail__main__footer-btn-like" onclick="like({{ article.id }});">
+                Like：<span id="like{{ article.id }}">{{ article.like }}</span>
+              </a>
+            </div><!-- /.like__body -->
+          </div><!-- /.articles__ttl__body__right -->
+
+        </div><!-- /.articles__ttl__body -->
+        
+        <p class="articles__txt">{{ article.body | linebreaksbr }}</p>  <!-- text -->
+  
+        
+      </div><!-- /.articles__body -->
+      {% endfor %}
+
+      {% else %}
+      <p>No article.</p>
+      {% endif %}
+  
+      
+      <div class="btn__body create__btn__body">
+        <a class="btn btn__link" href="{% url 'create' %}">New create</a>  <!-- 新規作成ページ（create.html）へのリンク -->
+      </div>
+    </div><!-- /.inner -->
+
+  </body>
+</html>

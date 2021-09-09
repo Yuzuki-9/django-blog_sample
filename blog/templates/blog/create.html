@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>記事投稿</title>
+  </head>
+  <body>
+
+
+    <header class="header">
+      <div class="header__inner inner">
+        <h1 class="header__ttl">Django Sample Application</h1>
+        <div class="header__create">
+          <a href="{% url 'create' %}" class="header__create__btn">New Post</a>
+        </div>
+      </div><!-- /.header__inner -->
+    </header>
+    
+
+    <div class="inner">
+
+      <!-- form -->
+      <div class="form__inner">
+        <h2 class="form__ttl">記事投稿</h2>
+        <p class="form__txt">下のフォームから記事を投稿できます。</p>
+        <form action="{% url 'index' %}" method="post">
+          {% csrf_token %}
+          <div>
+            <dt><label for="titleInput">Title</label></dt>
+            <dd><input id="titleInput" name="title" type="text" placeholder="Input title"></dd>
+          </div>
+          <div>
+            <dt><label for="textInput">Text</label></dt>
+            <dd><textarea id="textInput" name="text" rows="3"></textarea></dd>
+          </div>
+          <div class="submit__body">
+            <button class="submit__btn" type="submit">Submit</button>
+          </div>
+        </form>
+      </div><!-- /.form__inner -->
+      <div class="btn__body">
+        <a class="btn btn__link" href="{% url 'index' %}">Top</a>  <!-- TOPページ（index.html）へのリンク -->
+      </div>
+    </div><!-- /.inner -->
+
+  </body>
+</html>
