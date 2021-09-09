@@ -4,6 +4,9 @@ from django.db import models
 
 from django.utils import timezone
 
+# やることは「models.Model」を継承して、使いたいデータのモデルを作るだけ
+
+# 記事のモデルを作成
 class Article(models.Model):
   title = models.CharField(max_length=200)
   body = models.TextField()
