@@ -46,6 +46,7 @@
 
   
       <!-- 記事一覧 -->
+      <!-- 記事がある時（articleの要素数が0のとき） -->
       {% if articles %}
       {% for article in articles %}
       <div class="articles__body">
@@ -74,6 +75,7 @@
       </div><!-- /.articles__body -->
       {% endfor %}
 
+      <!-- 記事がない時（articleの要素数が0のとき） -->
       {% else %}
       <p>No article.</p>
       {% endif %}

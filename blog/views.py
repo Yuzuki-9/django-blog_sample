@@ -34,7 +34,7 @@ def hello(request):
   return render(request, 'blog/hello.html', data)
 
 def redirect_test(request):
-	return redirect(hello)
+	return redirect(hello)  # redirectにアクセスすると、helloにリダイレクトする
 
 def detail(request, article_id):
 	try:
