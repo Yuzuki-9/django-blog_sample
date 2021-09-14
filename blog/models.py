@@ -4,7 +4,7 @@ from django.db import models
 
 from django.utils import timezone
 
-# やることは「models.Model」を継承して、使いたいデータのモデルを作るだけ
+# models.Modelというクラスにデータベースとやり取りする機能は備わっているため、やることは「models.Model」を継承して、使いたいデータのモデルを作るだけ
 
 # 記事のモデルを作成
 class Article(models.Model):
@@ -13,9 +13,13 @@ class Article(models.Model):
   posted_at = models.DateTimeField(default=timezone.now)
   published_at = models.DateTimeField(blank=True, null=True)
   like = models.IntegerField(default=0)
+
+# 継承したクラスにpublishメソッドを追加
+# publishメソッドを呼びだすと、published_atに現在時刻が追加されてデータが保存される
   def publish(self):
       self.published_at = timezone.now()
       self.save()
+
   def __str__(self):
       return self.title
 

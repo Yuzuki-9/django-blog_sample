@@ -20,7 +20,7 @@ def index(request):
 	sort = '-posted_at'  # sortの初期値は最新投稿順
 	if('sort' in request.GET):  # 「sort」がURlに含まれているとき
 		sort = request.GET['sort']  # sortにURLに表示されている値を代入
-	context = {"articles": Article.objects.order_by(sort) }
+	context = {"articles": Article.objects.order_by(sort) }  # Articleモデルにアクセス
 	return render(request, 'blog/index.html', context)
 
 def hello(request):
