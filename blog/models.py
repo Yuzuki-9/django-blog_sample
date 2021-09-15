@@ -23,7 +23,7 @@ class Article(models.Model):
   def __str__(self):
       return self.title
 
-      
+# Articleモデルに紐付けられたCommentテーブル
 class Comment(models.Model):  # コメント機能のクラス
     text = models.TextField()
     posted_at = models.DateTimeField(default=timezone.now)

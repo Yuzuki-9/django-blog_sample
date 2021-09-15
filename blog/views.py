@@ -36,12 +36,14 @@ def hello(request):
 def redirect_test(request):
 	return redirect(hello)  # redirectにアクセスすると、helloにリダイレクトする
 
-def detail(request, article_id):
+# 記事詳細画面
+def detail(request, article_id):  #引数に記事のid、「article_id」 をとってきてそれぞれ変える
 	try:
-		article = Article.objects.get(pk=article_id)
-	except Article.DoesNotExist:
-		raise Http404("Article does not exist")
+		article = Article.objects.get(pk=article_id) #「pk=article_id」でこの記事を取得してarticleに格納
+	except Article.DoesNotExist:  # 例外のとき（エラー） 記事がないとき
+		raise Http404("Article does not exist")  # 記事が存在しないというメッセージ 404⇒ファイルがないときのメッセージ
 
+	# コメントが投稿される⇒POSTのリクエストが発生	
 	if request.method == 'POST':  #submitを押したときにPOSTのリクエストが発生、POSTメソッドでアクセスされた場合、Commentオブジェクトを生成し、データベースに保存
 		comment = Comment(article=article, text=request.POST['text'], posted_at=timezone.now())  #コメントをフォームの情報からとってくる、とってきたidの記事に紐付け、入力されたテキスト、投稿時間
 		comment.save()  #データベースに保存
@@ -53,16 +55,20 @@ def detail(request, article_id):
 	return render(request, "blog/detail.html", context)
 
 def update(request, article_id):
+	# Articleモデルから与えられたIDに対応したオブジェクトを取得
 	try:
 		article = Article.objects.get(pk=article_id)
 	except Article.DoesNotExist:
 		raise Http404("Article does not exist")
+	# postメソッドで呼び出された時
 	if request.method == 'POST':
-		article.title = request.POST['title']
-		article.body = request.POST['text']
+		article.title = request.POST['title']  # 更新されたtitleを代入
+		article.body = request.POST['text']  # 更新されたtextを代入
 		article.save()
-		return redirect(detail, article_id)
-	context = { "article": article }
+		return redirect(detail, article_id)  # 詳細画面にリダイレクト
+	context = {
+		"article": article
+	}
 	return render(request, "blog/edit.html", context)
 
 def delete(request, article_id):
