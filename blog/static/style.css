@@ -48,8 +48,9 @@ a {
   align-items: center;
 }
 
-.header__ttl {
+.header__ttl a {
   font-size: 30px;
+  color: #fff;
 }
 
 

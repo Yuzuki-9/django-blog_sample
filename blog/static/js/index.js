@@ -1,3 +1,4 @@
+// 非同期でいいね機能を実装
 function callback(json) {
     var element = document.getElementById('like' + json.id);
     element.textContent = json.like;

@@ -82,6 +82,7 @@ def delete(request, article_id):
 def create(request):
 	return render(request, "blog/create.html")
 
+# いいね機能
 def like(request, article_id):
 	try:
 		article = Article.objects.get(pk=article_id)
@@ -91,6 +92,7 @@ def like(request, article_id):
 		raise Http404("Article does not exist")
 	return redirect(detail, article_id)
 
+# REST APIを使用
 def api_like(request, article_id):
 	try:
 		article = Article.objects.get(pk=article_id)

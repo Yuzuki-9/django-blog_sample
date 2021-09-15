@@ -12,7 +12,7 @@ class Article(models.Model):
   body = models.TextField()
   posted_at = models.DateTimeField(default=timezone.now)
   published_at = models.DateTimeField(blank=True, null=True)
-  like = models.IntegerField(default=0)
+  like = models.IntegerField(default=0)  # いいね数
 
 # 継承したクラスにpublishメソッドを追加
 # publishメソッドを呼びだすと、published_atに現在時刻が追加されてデータが保存される
